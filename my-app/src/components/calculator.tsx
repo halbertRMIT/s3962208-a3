@@ -13,7 +13,7 @@ export default function Calculator() {
     const payload = {
       loanType,
       loanAmount: Number(loanAmount),
-      term,
+      term: Number(term),
       creditScore: credit,
       houseAge: Number(age),
     };
@@ -52,7 +52,14 @@ export default function Calculator() {
     const val = e.target.value;
     const num = Number(val);
 
-    setTerm(val);
+
+
+    if (val === "") {
+      setTerm(val);
+      return;
+    }
+    
+    setTerm(val)
 
     if (loanType === "Fixed Rate" || loanType === "Variable Rate") {
       // term must be between 1 and 30
